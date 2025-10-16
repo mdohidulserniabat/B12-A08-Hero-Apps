@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useLoaderData } from 'react-router';
 import Finalapps from '../Component/Finalapps';
 import Navbar from '../Component/Navbar';
@@ -6,6 +6,14 @@ import Footer from '../Component/Footer';
 
 const Allapps = () => {
   const allData = useLoaderData();
+  const [search, setSearch] = useState('');
+  const searchFilter = search.trim().toLocaleLowerCase();
+  const searchApps = searchFilter
+    ? allData.filter(apps =>
+        apps.title.toLocaleLowerCase().includes(searchFilter)
+      )
+    : allData;
+  console.log(searchApps);
   return (
     <>
       <Navbar></Navbar>
@@ -17,7 +25,7 @@ const Allapps = () => {
       </div>
       <div className="px-5 flex justify-between items-center">
         <h1 className="text-2xl font-semibold">
-          ({allData.length}) Apps Found
+          ({searchApps.length}) Apps Found
         </h1>
 
         <label className="input">
@@ -37,11 +45,17 @@ const Allapps = () => {
               <path d="m21 21-4.3-4.3"></path>
             </g>
           </svg>
-          <input type="search" required placeholder="Search" />
+          <input
+            value={search}
+            onChange={e => setSearch(e.target.value)}
+            type="search"
+            required
+            placeholder="Search"
+          />
         </label>
       </div>
       <div className="grid grid-cols-4 gap-4 my-5">
-        {allData.map(data => (
+        {searchApps.map(data => (
           <Finalapps key={data.id} data={data}></Finalapps>
         ))}
       </div>

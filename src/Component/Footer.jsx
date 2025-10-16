@@ -1,7 +1,7 @@
 import React from 'react';
 import Logo from '../assets/logo.png';
 import { Link } from 'react-router';
-// import { Link } from 'react-router';
+import { FaFacebook, FaTwitter, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 const Footer = () => {
   return (
@@ -11,7 +11,7 @@ const Footer = () => {
         <p>
           HERO.IO.
           <br />
-          Providing reliable tech since 1992
+          Copyright © 2025 - All right reserved
         </p>
       </aside>
       <nav>
@@ -20,18 +20,45 @@ const Footer = () => {
         <Link className="link link-hover">Apps</Link>
         <Link className="link link-hover">Installation</Link>
       </nav>
-      <nav>
+      {/* <nav>
         <h6 className="footer-title">Company</h6>
         <Link className="link link-hover">About us</Link>
         <Link className="link link-hover">Contact</Link>
         <Link clLinkssName="link link-hover">Jobs</Link>
         <Link className="link link-hover">Press kit</Link>
-      </nav>
+      </nav> */}
       <nav>
-        <h6 className="footer-title">Legal</h6>
-        <Link className="link link-hover">Terms of use</Link>
-        <Link className="link link-hover">Privacy policy</Link>
-        <Link clLinkssName="link link-hover">Cookie policy</Link>
+        <h6 className="footer-title">Social Links</h6>
+        <div className="flex gap-4 text-2xl text-blue-600 justify-center mt-4">
+          <Link
+            to="https://facebook.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaFacebook />
+          </Link>
+          <Link
+            to="https://twitter.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaTwitter />
+          </Link>
+          <Link
+            to="https://instagram.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaInstagram />
+          </Link>
+          <Link
+            to="https://linkedin.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <FaLinkedin />
+          </Link>
+        </div>
       </nav>
     </footer>
   );
