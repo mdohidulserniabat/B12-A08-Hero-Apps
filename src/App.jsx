@@ -15,7 +15,7 @@ function App() {
   return (
     <>
       <Navbar />
-      <Home />
+      {/* <Home /> */}
       <Outlet />
       <Footer />
     </>

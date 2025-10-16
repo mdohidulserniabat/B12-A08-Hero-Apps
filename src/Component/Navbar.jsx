@@ -40,7 +40,9 @@ const Navbar = () => {
           </ul>
         </div>
         <img src={logo} alt="" className="h-9" />
-        <a className="btn btn-ghost text-xl">HERO.IO</a>
+        <Link to="/" className="btn btn-ghost text-xl">
+          HERO.IO
+        </Link>
       </div>
       <div className="navbar-center hidden lg:flex">
         <ul className="menu menu-horizontal px-1">
@@ -48,7 +50,7 @@ const Navbar = () => {
             <a>Home</a>
           </li>
           <li>
-            <a>Apps</a>
+            <Link to="/apps">Apps</Link>
           </li>
           <li>
             <a>Installation</a>
@@ -57,7 +59,7 @@ const Navbar = () => {
       </div>
       <div className="navbar-end">
         <Link
-          to="https://github.com/mdohidulserniabat"
+          to="https://github.com/mdohidulserniabat/B12-A08-Hero-Apps"
           className="btn bg-[linear-gradient(125deg,#632EE3,#9F62F2)]"
         >
           <img src={vector} alt="" />
