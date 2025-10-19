@@ -7,6 +7,7 @@ import Error from '../Pages/Error';
 import Allapps from '../Pages/Allapps';
 import AppDetails from '../Pages/AppDetails';
 import install from '../Pages/install';
+import Install from '../Pages/install';
 
 const router = createBrowserRouter([
   {
@@ -34,7 +35,7 @@ const router = createBrowserRouter([
   },
   {
     path: '/install',
-    Component: install,
+    Component: Install,
   },
 ]);
 export default router;
