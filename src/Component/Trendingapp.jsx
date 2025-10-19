@@ -10,7 +10,7 @@ const Trendingapp = ({ datas }) => {
       <p className="font-bold opacity-75">
         Explore All Trending Apps on the Market developed by us
       </p>
-      <div className="grid grid-cols-4 gap-5">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-5">
         {finalData.map(data => (
           <Apps key={data.id} data={data}></Apps>
         ))}

@@ -1,19 +1,33 @@
-import React, { useState } from 'react';
-import { useLoaderData } from 'react-router';
+import React, { useEffect, useState } from 'react';
+import { Link, useLoaderData } from 'react-router';
 import Finalapps from '../Component/Finalapps';
 import Navbar from '../Component/Navbar';
 import Footer from '../Component/Footer';
+import appNotFound from '../assets/App-Error.png';
 
 const Allapps = () => {
   const allData = useLoaderData();
   const [search, setSearch] = useState('');
-  const searchFilter = search.trim().toLocaleLowerCase();
-  const searchApps = searchFilter
-    ? allData.filter(apps =>
-        apps.title.toLocaleLowerCase().includes(searchFilter)
-      )
-    : allData;
-  console.log(searchApps);
+  const [searchApps, setSearchApps] = useState(allData);
+  const [loading, setLoading] = useState(false);
+
+  useEffect(() => {
+    setLoading(true);
+    const timer = setTimeout(() => {
+      const searchFilter = search.trim().toLocaleLowerCase();
+      const filtered = searchFilter
+        ? allData.filter(apps =>
+            apps.title.toLocaleLowerCase().includes(searchFilter)
+          )
+        : allData;
+
+      setSearchApps(filtered);
+      setLoading(false);
+    }, 300);
+
+    return () => clearTimeout(timer);
+  }, [search, allData]);
+
   return (
     <>
       <Navbar></Navbar>
@@ -54,11 +68,41 @@ const Allapps = () => {
           />
         </label>
       </div>
-      <div className="grid grid-cols-4 gap-4 my-5">
-        {searchApps.map(data => (
-          <Finalapps key={data.id} data={data}></Finalapps>
-        ))}
-      </div>
+
+      {loading ? (
+        <div className="flex flex-col items-center justify-center my-20">
+          {/* DaisyUI loading spinner */}
+          <span className="loading loading-spinner text-primary text-4xl"></span>
+          <p className="mt-3 text-gray-600">Searching apps...</p>
+        </div>
+      ) : searchApps.length > 0 ? (
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-4 my-5">
+          {searchApps.map(data => (
+            <Finalapps key={data.id} data={data}></Finalapps>
+          ))}
+        </div>
+      ) : (
+        <div className="text-center mt-20 mb-10">
+          <img
+            src={appNotFound}
+            alt="No results"
+            className="mx-auto w-48 mb-4 opacity-80"
+          />
+          <h2 className="text-2xl font-medium text-gray-600">
+            OPPS!! APP NOT FOUND “{search}”
+          </h2>
+          <p className="text-gray-500">
+            The App you are requesting is not found on our system. please try
+            another apps
+          </p>
+          <Link
+            to="/"
+            className="btn bg-[linear-gradient(125deg,#632EE3,#9F62F2)] text-white mt-4"
+          >
+            Go Back
+          </Link>
+        </div>
+      )}
       <Footer></Footer>
     </>
   );

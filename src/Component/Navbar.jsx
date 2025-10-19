@@ -29,13 +29,13 @@ const Navbar = () => {
             className="menu menu-sm dropdown-content bg-base-100 rounded-box z-1 mt-3 w-52 p-2 shadow"
           >
             <li>
-              <NavLink to="/about">Home</NavLink>
+              <NavLink to="/">Home</NavLink>
             </li>
             <li>
-              <a>Apps</a>
+              <Link to="/apps">Apps</Link>
             </li>
             <li>
-              <a>Installation</a>
+              <Link to="/install">Installation</Link>
             </li>
           </ul>
         </div>
@@ -72,7 +72,7 @@ const Navbar = () => {
           </li>
           <li>
             <NavLink
-              to="/Installation"
+              to="/install"
               className={({ isActive }) =>
                 isActive
                   ? 'text-blue-600 font-semibold border-b-2 border-blue-600'

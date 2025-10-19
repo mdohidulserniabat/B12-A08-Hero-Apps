@@ -4,7 +4,7 @@ const Trusted = () => {
   return (
     <div className="bg-[#6a34e5] text-white text-center py-8">
       <h1 className="text-4xl mb-3">Trusted by Millions, Built for You</h1>
-      <div className="grid grid-cols-3 justify-center items-center text-center">
+      <div className="grid grid-cols-1 md:grid-cols-3 justify-center items-center text-center">
         <div>
           <p className="opacity-75">Total Downloads</p>
           <h1 className="text-6xl font-bold">29.6M</h1>
